@@ -1,0 +1,12 @@
+environment:
+  - PORT=80
+  - NODE_ENV=production
+  - GATSBY_API_URL=https://api.example.com
+  - CONTENTFUL_SPACE_ID
+  - CONTENTFUL_ACCESS_TOKEN
+
+services:
+  web:
+    domain: ${HOST}
+    build: .
+    port: 80
