@@ -15,10 +15,17 @@ ENV CONTENTFUL_ACCESS_TOKEN=${CONTENTFUL_ACCESS_TOKEN}
 
 RUN npm run build
 
-FROM nginx:stable-alpine
+FROM node:18
 
-COPY --from=builder /usr/src/app/public /usr/share/nginx/html
+WORKDIR /usr/src/app
 
-EXPOSE 80
+COPY --from=builder /usr/src/app/public ./public
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install -g gatsby-cli
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+EXPOSE 3000
+
+CMD ["gatsby", "serve", "-p", "3000", "-H", "0.0.0.0"]
