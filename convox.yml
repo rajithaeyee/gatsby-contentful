@@ -1,5 +1,5 @@
 environment:
-  - PORT=80
+  - PORT=3000
   - NODE_ENV=production
   - GATSBY_API_URL=https://api.example.com
   - CONTENTFUL_SPACE_ID
@@ -9,4 +9,4 @@ services:
   web:
     domain: ${HOST}
     build: .
-    port: 80
+    port: 3000
