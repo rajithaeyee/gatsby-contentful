@@ -24,9 +24,9 @@ COPY --from=builder /usr/src/app/package*.json ./
 
 RUN npm install --only=production
 
-ENV PORT=9000
+ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-EXPOSE 9000
+EXPOSE 3000
 
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "serve", "--", "-H", "0.0.0.0", "-p", "3000"]
