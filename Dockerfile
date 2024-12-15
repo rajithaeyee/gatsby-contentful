@@ -20,12 +20,13 @@ FROM node:18
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/package*.json ./
 
-RUN npm install -g gatsby-cli
+RUN npm install --only=production
 
-ENV PORT=3000
+ENV PORT=9000
 ENV HOSTNAME="0.0.0.0"
 
-EXPOSE 3000
+EXPOSE 9000
 
-CMD ["gatsby", "serve", "-p", "3000", "-H", "0.0.0.0"]
+CMD ["npm", "run", "serve"]
